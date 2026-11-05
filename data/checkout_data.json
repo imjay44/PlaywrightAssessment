@@ -1,0 +1,47 @@
+{
+  "valid_address": {
+    "line1": "742 Evergreen Terrace",
+    "line2": "Apt 4B",
+    "city": "Springfield",
+    "state": "OR",
+    "postalCode": "97477",
+    "country": "US",
+    "phone": "555-0199"
+  },
+  "invalid_addresses": [
+    {
+      "description": "empty fields",
+      "payload": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "country": "",
+        "phone": ""
+      },
+      "expected_errors": ["Street address is required", "City is required", "Postal code is required"]
+    },
+    {
+      "description": "invalid country length",
+      "payload": {
+        "line1": "123 Main St",
+        "city": "Metropolis",
+        "postalCode": "12345",
+        "country": "USA"
+      },
+      "expected_errors": ["Use a 2-letter country code"]
+    },
+    {
+      "description": "invalid postal code length",
+      "payload": {
+        "line1": "123 Main St",
+        "city": "Metropolis",
+        "postalCode": "1",
+        "country": "US"
+      },
+      "expected_errors": ["Postal code is required"]
+    }
+  ]
+}
+
