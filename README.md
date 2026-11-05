@@ -1,6 +1,6 @@
 # Northline Store Automation Test Suite (Python Playwright)
 
-[![Northline Tests](https://github.com/owner/repo/actions/workflows/tests.yml/badge.svg)](https://github.com/owner/repo/actions/workflows/tests.yml)
+[![Northline Tests](https://github.com/imjay44/PlaywrightAssessment/actions/workflows/tests.yml/badge.svg)](https://github.com/imjay44/PlaywrightAssessment/actions/workflows/tests.yml)
 
 Automated end-to-end (E2E) UI and API testing framework for the [Northline Store](https://ecomcicid.netlify.app/) e-commerce web application, built with **Python 3.11+**, **Playwright**, **pytest**, and **GitHub Actions**.
 
@@ -187,3 +187,4 @@ The pipeline is defined in `.github/workflows/tests.yml`:
 ## 📊 Test Inventory & Results
 
 See [TEST_SUMMARY_REPORT.md](TEST_SUMMARY_REPORT.md) for full execution results, pass/fail counts, and defect analysis.
+

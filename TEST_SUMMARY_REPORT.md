@@ -121,3 +121,4 @@ During discovery in Task 1, static analysis of the client bundle revealed that t
 - [x] Every pull request automatically triggers the test suite across browsers.
 - [x] Failed tests capture screenshots and Playwright traces for post-mortem debugging.
 - [x] Zero hardcoded `time.sleep` calls; all assertions rely on auto-waiting and role/label locators.
+

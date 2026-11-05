@@ -28,7 +28,8 @@ ENV/
 
 # Pytest / Test Outputs
 .pytest_cache/
-reports/
+reports/*
+!reports/report.html
 test-results/
 .coverage
 htmlcov/
