@@ -46,19 +46,19 @@ An end-to-end (E2E) UI and API automation suite was built for the Northline Stor
 | **E2E-19** | Cross-Browser| Smoke check across engines| Verified across Chromium, Firefox, and WebKit | **PASSED** |
 | **E2E-20** | Negative | Invalid URL navigation | Friendly unavailable state with "Back to catalog" link | **PASSED** |
 
-### API Test Suite (9 Tests)
+### API Test Suite (9 Tests against MockAPI Endpoint: `https://681444af225ff1af16285b31.mockapi.io/electronicapi`)
 
 | ID | Check | Endpoint / Contract | Expected Result | Status |
 |---|---|---|---|---|
-| **API-01** | GET product list | `/catalog.json` | Status 200, non-empty list conforming to JSON schema | **PASSED** |
-| **API-02** | GET single product | Product item schema | Validates `id`, `name`, `price`, `images` types and presence | **PASSED** |
-| **API-03** | Unknown product | Unknown ID check | Unknown product id not found in catalog | **PASSED** |
-| **API-04** | Response time | Key endpoints | Response received in < 2.0s (measured < 0.25s) | **PASSED** |
-| **API-05** | Headers | `/catalog.json` | Validates `content-type: application/json` & HSTS headers | **PASSED** |
-| **API-06** | Cart/Checkout contract| Order payload structure | Conforms to shippingAddress, country code schema | **PASSED** |
-| **API-07** | Invalid payload | Schema validation | Rejects malformed payload with clear validation error | **PASSED** |
-| **API-08** | UI vs API consistency | Catalog vs UI Grid | Prices and names rendered on UI match catalog data | **PASSED** |
-| **API-09** | Network mocking | Simulated 500 error | Intercepting data calls displays graceful error state | **PASSED** |
+| **API-01** | GET product list | `GET /electronicapi` | Status 200, non-empty JSON array conforming to product schema | **PASSED** |
+| **API-02** | GET single product | `GET /electronicapi/1` | Status 200, matches schema (`id`, `name`, `price`, `image`) | **PASSED** |
+| **API-03** | Unknown product | `GET /electronicapi/999999` | Status 404 Not Found | **PASSED** |
+| **API-04** | Response time | `GET /electronicapi` | Response received in < 2.0s (measured ~0.24s) | **PASSED** |
+| **API-05** | Headers | `GET /electronicapi` | Validates `content-type: application/json` & CORS headers | **PASSED** |
+| **API-06** | Product CRUD operations | `POST` & `DELETE /electronicapi`| Creates product (201 Created), validates ID, deletes item (200 OK) | **PASSED** |
+| **API-07** | Invalid payload | Schema validation | Rejects malformed payload missing required fields | **PASSED** |
+| **API-08** | UI vs API consistency | MockAPI data in UI | Product name and formatted currency price match API data | **PASSED** |
+| **API-09** | Network mocking | Intercepted 500 error | Simulated 500 error displays graceful error state in UI | **PASSED** |
 
 ---
 

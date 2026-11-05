@@ -86,3 +86,24 @@ def checkout_fixtures() -> dict:
     with open(fixture_path, "r") as f:
         return json.load(f)
 
+
+@pytest.fixture(scope="session")
+def electronic_api_url() -> str:
+    """MockAPI endpoint provided for electronic products API."""
+    return os.environ.get("ELECTRONIC_API_URL", "https://681444af225ff1af16285b31.mockapi.io/electronicapi")
+
+
+@pytest.fixture
+def electronic_api_context(playwright: Playwright) -> Generator[APIRequestContext, None, None]:
+    """APIRequestContext configured for the MockAPI endpoint."""
+    context = playwright.request.new_context(base_url="https://681444af225ff1af16285b31.mockapi.io")
+    yield context
+    context.dispose()
+
+
+@pytest.fixture
+def electronic_api_schema() -> dict:
+    schema_path = os.path.join(os.path.dirname(__file__), "data", "electronic_api_schema.json")
+    with open(schema_path, "r") as f:
+        return json.load(f)
+
